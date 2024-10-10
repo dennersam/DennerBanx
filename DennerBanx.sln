@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4B063713-0DA5-46CA-889B-EA4D9F63F3CD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{8050F7DD-6F1F-4A17-87C2-145457260191}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DennerBanx.API", "src\DennerBanx.API\DennerBanx.API.csproj", "{FA02F536-4760-4885-B7B6-CC9A97D42E0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DennerBanx.Application", "src\DennerBanx.Application\DennerBanx.Application.csproj", "{D9D43216-6ED3-4E6B-922D-877D8B3B4893}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DennerBanx.Communication", "src\DennerBanx.Communication\DennerBanx.Communication.csproj", "{0358ED12-3D1F-4A9C-A8FB-7D00B9942FD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DennerBanx.Domain", "DennerBanx.Domain\DennerBanx.Domain.csproj", "{D22F83E3-95EA-43F2-A032-566FE1735908}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DennerBanx.Infraestructure", "DennerBanx.Infraestructure\DennerBanx.Infraestructure.csproj", "{2776512A-E8BA-4595-B30F-5E2C175AC020}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA02F536-4760-4885-B7B6-CC9A97D42E0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA02F536-4760-4885-B7B6-CC9A97D42E0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA02F536-4760-4885-B7B6-CC9A97D42E0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA02F536-4760-4885-B7B6-CC9A97D42E0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9D43216-6ED3-4E6B-922D-877D8B3B4893}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9D43216-6ED3-4E6B-922D-877D8B3B4893}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9D43216-6ED3-4E6B-922D-877D8B3B4893}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9D43216-6ED3-4E6B-922D-877D8B3B4893}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0358ED12-3D1F-4A9C-A8FB-7D00B9942FD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0358ED12-3D1F-4A9C-A8FB-7D00B9942FD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0358ED12-3D1F-4A9C-A8FB-7D00B9942FD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0358ED12-3D1F-4A9C-A8FB-7D00B9942FD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D22F83E3-95EA-43F2-A032-566FE1735908}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D22F83E3-95EA-43F2-A032-566FE1735908}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D22F83E3-95EA-43F2-A032-566FE1735908}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D22F83E3-95EA-43F2-A032-566FE1735908}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2776512A-E8BA-4595-B30F-5E2C175AC020}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2776512A-E8BA-4595-B30F-5E2C175AC020}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2776512A-E8BA-4595-B30F-5E2C175AC020}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2776512A-E8BA-4595-B30F-5E2C175AC020}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FA02F536-4760-4885-B7B6-CC9A97D42E0E} = {4B063713-0DA5-46CA-889B-EA4D9F63F3CD}
+		{D9D43216-6ED3-4E6B-922D-877D8B3B4893} = {4B063713-0DA5-46CA-889B-EA4D9F63F3CD}
+		{0358ED12-3D1F-4A9C-A8FB-7D00B9942FD4} = {4B063713-0DA5-46CA-889B-EA4D9F63F3CD}
+		{D22F83E3-95EA-43F2-A032-566FE1735908} = {4B063713-0DA5-46CA-889B-EA4D9F63F3CD}
+		{2776512A-E8BA-4595-B30F-5E2C175AC020} = {4B063713-0DA5-46CA-889B-EA4D9F63F3CD}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BDF65A6C-D63F-4D48-B12A-75331D925451}
+	EndGlobalSection
+EndGlobal

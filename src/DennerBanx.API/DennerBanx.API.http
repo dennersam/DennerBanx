@@ -1,0 +1,14 @@
+@DennerBanx.API_HostAddress = http://localhost:5102
+
+GET {{DennerBanx.API_HostAddress}}/reset
+Accept: application/json
+
+###
+GET {{DennerBanx.API_HostAddress}}/balance?account_id=1234
+Accept: application/json
+
+###
+POST {{DennerBanx.API_HostAddress}}/event {"type":"deposit", "destination":"100", "amount":10}
+
+
+###
