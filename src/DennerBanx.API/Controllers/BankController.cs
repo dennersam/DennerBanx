@@ -1,107 +1,54 @@
-﻿using DennerBanx.Communication.Requests;
-using DennerBanx.Infraestructure.DataAccess.Repositories;
+﻿using DennerBanx.Application.UseCases;
+using DennerBanx.Communication.Requests;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DennerBanx.API.Controllers;
-[Route("api/[controller]")]
+[Route("/")]
 [ApiController]
 public class BankController : ControllerBase
 {
-    private readonly AccountRepository _repository;
+    private readonly AccountUseCase _accountUseCase;
 
-    public BankController(AccountRepository repository)
+    public BankController(AccountUseCase accountUseCase)
     {
-        _repository = repository;
+        _accountUseCase = accountUseCase;
     }
 
     [HttpPost("reset")]
     public IActionResult Reset()
     {
-        _repository.Reset();
+        _accountUseCase.Reset();
         return Ok();
     }
 
     [HttpGet("balance")]
     public IActionResult GetBalance([FromQuery] string account_id)
     {
-        var account = _repository.GetAccount(account_id);
-        if (account == null)
+        var balance = _accountUseCase.GetBalance(account_id);
+        if (balance == null)
         {
             return NotFound(0);
         }
-        return Ok(account.Balance);
+        return Ok(balance);
     }
 
 
     [HttpPost("event")]
     public IActionResult Event([FromBody] RequestEventJson request)
     {
-        switch (request.Type.ToLower())
+        object result = request.Type.ToLower() switch
         {
-            case "deposit":
-                return HandleDeposit(request);
-            case "withdraw":
-                return HandleWithdraw(request);
-            case "transfer":
-                return HandleTransfer(request);
-            default:
-                return BadRequest();
-        }
-    }
+            "deposit" => _accountUseCase.HandleDeposit(request),
+            "withdraw" => _accountUseCase.HandleWithdraw(request),
+            "transfer" => _accountUseCase.HandleTransfer(request),
+            _ => BadRequest()
+        };
 
-    private IActionResult HandleDeposit(RequestEventJson request)
-    {
-        var account = _repository.GetAccount(request.Destination);
-        if (account == null)
-        {
-            _repository.CreateAccount(request.Destination, request.Amount);
-            return Created("", new { destination = new { id = request.Destination, balance = request.Amount } });
-        }
-
-        account.Balance += request.Amount;
-        _repository.UpdateAccountBalance(request.Destination, account.Balance);
-        return Created("", new { destination = new { id = request.Destination, balance = account.Balance } });
-    }
-
-    private IActionResult HandleWithdraw(RequestEventJson request)
-    {
-        var account = _repository.GetAccount(request.Origin);
-        if (account == null || account.Balance < request.Amount)
+        if (result == null)
         {
             return NotFound(0);
         }
 
-        account.Balance -= request.Amount;
-        _repository.UpdateAccountBalance(request.Origin, account.Balance);
-        return Created("", new { origin = new { id = request.Origin, balance = account.Balance } });
-    }
-
-    private IActionResult HandleTransfer(RequestEventJson request)
-    {
-        var originAccount = _repository.GetAccount(request.Origin);
-        var destinationAccount = _repository.GetAccount(request.Destination);
-
-        if (originAccount == null || originAccount.Balance < request.Amount)
-        {
-            return NotFound(0);
-        }
-
-        if (destinationAccount == null)
-        {
-            _repository.CreateAccount(request.Destination, 0);
-            destinationAccount = _repository.GetAccount(request.Destination);
-        }
-
-        originAccount.Balance -= request.Amount;
-        destinationAccount.Balance += request.Amount;
-
-        _repository.UpdateAccountBalance(request.Origin, originAccount.Balance);
-        _repository.UpdateAccountBalance(request.Destination, destinationAccount.Balance);
-
-        return Created(string.Empty, new
-        {
-            origin = new { id = request.Origin, balance = originAccount.Balance },
-            destination = new { id = request.Destination, balance = destinationAccount.Balance }
-        });
+        return Created(string.Empty, result);
     }
 }

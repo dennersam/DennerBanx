@@ -1,3 +1,4 @@
+using DennerBanx.Application.UseCases;
 using DennerBanx.Domain.Repositories.Accounts;
 using DennerBanx.Infraestructure.DataAccess.Repositories;
 
@@ -6,7 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddSingleton<AccountRepository>();
+builder.Services.AddSingleton<IAccountRepository, AccountRepository>();
+builder.Services.AddScoped<AccountUseCase>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

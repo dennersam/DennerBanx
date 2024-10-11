@@ -7,13 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DennerBanx.Communication\DennerBanx.Communication.csproj" />
-    <ProjectReference Include="..\DennerBanx.Domain\DennerBanx.Domain.csproj" />
-    <ProjectReference Include="..\DennerBanx.Infraestructure\DennerBanx.Infraestructure.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="UseCases\Events\" />
+    <ProjectReference Include="..\DennerBanx.Communication\DennerBanx.Communication.csproj" />
+    <ProjectReference Include="..\DennerBanx.Domain\DennerBanx.Domain.csproj" />
+    <ProjectReference Include="..\DennerBanx.Infraestructure\DennerBanx.Infraestructure.csproj" />
   </ItemGroup>
 
 </Project>
