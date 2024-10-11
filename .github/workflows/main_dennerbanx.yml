@@ -53,4 +53,4 @@ jobs:
           app-name: 'dennerbanx'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_607E287C1B074B3B8A42BEE6B5CF4547 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_80EE226FD4AB45D3A91C4378221EA830 }}
