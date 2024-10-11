@@ -6,4 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DennerBanx.Communication\DennerBanx.Communication.csproj" />
+    <ProjectReference Include="..\DennerBanx.Domain\DennerBanx.Domain.csproj" />
+    <ProjectReference Include="..\DennerBanx.Infraestructure\DennerBanx.Infraestructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="UseCases\Events\" />
+  </ItemGroup>
+
 </Project>
