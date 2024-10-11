@@ -15,6 +15,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DennerBanx.Domain", "src\De
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DennerBanx.Infraestructure", "src\DennerBanx.Infraestructure\DennerBanx.Infraestructure.csproj", "{214D6590-CDD7-44AD-BE86-E2A30E5712F6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3A8FF8C0-78AB-4C59-8587-CB578AB59FB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DennerBanx.Tests", "tests\DennerBanx.Tests\DennerBanx.Tests.csproj", "{963B5DFE-AE32-44A9-A6CE-F8C4941922F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +45,10 @@ Global
 		{214D6590-CDD7-44AD-BE86-E2A30E5712F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{214D6590-CDD7-44AD-BE86-E2A30E5712F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{214D6590-CDD7-44AD-BE86-E2A30E5712F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{963B5DFE-AE32-44A9-A6CE-F8C4941922F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{963B5DFE-AE32-44A9-A6CE-F8C4941922F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{963B5DFE-AE32-44A9-A6CE-F8C4941922F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{963B5DFE-AE32-44A9-A6CE-F8C4941922F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,6 +59,7 @@ Global
 		{0358ED12-3D1F-4A9C-A8FB-7D00B9942FD4} = {4B063713-0DA5-46CA-889B-EA4D9F63F3CD}
 		{81F05819-3E87-496B-8B71-857992E9EEC7} = {4B063713-0DA5-46CA-889B-EA4D9F63F3CD}
 		{214D6590-CDD7-44AD-BE86-E2A30E5712F6} = {4B063713-0DA5-46CA-889B-EA4D9F63F3CD}
+		{963B5DFE-AE32-44A9-A6CE-F8C4941922F6} = {3A8FF8C0-78AB-4C59-8587-CB578AB59FB4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BDF65A6C-D63F-4D48-B12A-75331D925451}
