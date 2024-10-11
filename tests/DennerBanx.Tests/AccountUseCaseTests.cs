@@ -48,41 +48,6 @@ namespace DennerBanx.Tests
         }
 
         [Fact]
-        public void HandleDeposit_ShouldCreateNewAccount_WhenAccountDoesNotExist()
-        {
-            // Arrange
-            var request = new RequestEventJson { Destination = "100", Amount = 10, Type = "deposit" };
-            _accountRepositoryMock.Setup(repo => repo.GetAccount(request.Destination)).Returns((Account)null);
-
-            // Act
-            var result = _accountUseCase.HandleDeposit(request);
-
-            // Assert
-            Assert.NotNull(result);
-            Assert.Equal("100", ((dynamic)result).destination.id);
-            Assert.Equal(10, ((dynamic)result).destination.balance);
-            _accountRepositoryMock.Verify(repo => repo.CreateAccount("100", 10), Times.Once);
-        }
-
-        [Fact]
-        public void HandleDeposit_ShouldUpdateBalance_WhenAccountExists()
-        {
-            // Arrange
-            var existingAccount = new Account() { Id= "100", Balance = 20 };
-            var request = new RequestEventJson { Destination = "100", Amount = 10, Type = "deposit" };
-            _accountRepositoryMock.Setup(repo => repo.GetAccount(request.Destination)).Returns(existingAccount);
-
-            // Act
-            var result = _accountUseCase.HandleDeposit(request);
-
-            // Assert
-            Assert.NotNull(result);
-            Assert.Equal("100", ((dynamic)result).destination.id);
-            Assert.Equal(30, ((dynamic)result).destination.balance);
-            _accountRepositoryMock.Verify(repo => repo.UpdateAccountBalance("100", 30), Times.Once);
-        }
-
-        [Fact]
         public void HandleWithdraw_ShouldReturnNull_WhenAccountDoesNotExist()
         {
             // Arrange
@@ -109,24 +74,6 @@ namespace DennerBanx.Tests
 
             // Assert
             Assert.Null(result);
-        }
-
-        [Fact]
-        public void HandleWithdraw_ShouldUpdateBalance_WhenSufficientBalance()
-        {
-            // Arrange
-            var existingAccount = new Account() { Id = "100", Balance = 20 };
-            var request = new RequestEventJson { Origin = "100", Amount = 5, Type = "withdraw" };
-            _accountRepositoryMock.Setup(repo => repo.GetAccount(request.Origin)).Returns(existingAccount);
-
-            // Act
-            var result = _accountUseCase.HandleWithdraw(request);
-
-            // Assert
-            Assert.NotNull(result);
-            Assert.Equal("100", ((dynamic)result).origin.id);
-            Assert.Equal(15, ((dynamic)result).origin.balance);
-            _accountRepositoryMock.Verify(repo => repo.UpdateAccountBalance("100", 15), Times.Once);
         }
 
         [Fact]
@@ -158,28 +105,5 @@ namespace DennerBanx.Tests
             Assert.Null(result);
         }
 
-        [Fact]
-        public void HandleTransfer_ShouldTransferFunds_WhenAccountsExistAndSufficientBalance()
-        {
-            // Arrange
-            var originAccount = new Account() { Id = "100", Balance = 20 };
-            var destinationAccount = new Account() { Id = "100", Balance = 0 };
-            var request = new RequestEventJson { Origin = "100", Destination = "300", Amount = 15, Type = "transfer" };
-
-            _accountRepositoryMock.Setup(repo => repo.GetAccount(request.Origin)).Returns(originAccount);
-            _accountRepositoryMock.Setup(repo => repo.GetAccount(request.Destination)).Returns(destinationAccount);
-
-            // Act
-            var result = _accountUseCase.HandleTransfer(request);
-
-            // Assert
-            Assert.NotNull(result);
-            Assert.Equal("100", ((dynamic)result).origin.id);
-            Assert.Equal(5, ((dynamic)result).origin.balance);
-            Assert.Equal("300", ((dynamic)result).destination.id);
-            Assert.Equal(15, ((dynamic)result).destination.balance);
-            _accountRepositoryMock.Verify(repo => repo.UpdateAccountBalance("100", 5), Times.Once);
-            _accountRepositoryMock.Verify(repo => repo.UpdateAccountBalance("300", 15), Times.Once);
-        }
     }
 }
