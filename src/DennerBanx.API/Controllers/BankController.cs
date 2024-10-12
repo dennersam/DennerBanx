@@ -18,7 +18,7 @@ public class BankController : ControllerBase
     public IActionResult Reset()
     {
         _accountUseCase.Reset();
-        return Ok("OK");
+        return Content("OK", "text/plan");
     }
 
     [HttpGet("balance")]
